@@ -1,0 +1,29 @@
+{{define "index"}}
+{{template "header" .}}
+
+<center>
+<p>{{.Title}}</p>
+
+<table border="1" cellspacing="0" cellpadding="5"  bordercolor="#333333">
+  &nbsp;&nbsp;
+  <tr><th>日付</th>
+  <th>体温</th>
+</tr>
+{{range $n,$i := .Temps}}
+&nbsp;&nbsp;
+    <tr>
+        <td>{{$i.Date}}</td>
+        <td>{{$i.Temp}}</td>
+    </tr>
+{{end}}
+
+</table>
+<br><br>
+<form action="/" method="post" class="board-form">
+  <span class="label">今日の体温&nbsp;&nbsp;</span><input type="text" name="bloodtemp" class="input" required>&nbsp;度<br>
+  <button type="submit" class="submit">追加</button>
+</form>
+</center>
+
+{{template "footer"}}
+{{end}}

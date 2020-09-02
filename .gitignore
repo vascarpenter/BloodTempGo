@@ -22,7 +22,6 @@ share/
 *.zip
 BloodTemp
 *.sql
-*.html
 *.sh
 
 # Linux
