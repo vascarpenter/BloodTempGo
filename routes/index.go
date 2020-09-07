@@ -24,8 +24,6 @@ type indexHTMLtemplate struct {
 	Temps []tableBloodTemp
 }
 
-// select id,nums,dname,needvalue,dchild.iconid from dchild inner join selectgift on dchild.iconid = selectgift.iconid order by needvalue desc;
-
 // IndexRouter  GET "/" を処理
 func IndexRouter(c echo.Context) error {
 
@@ -43,7 +41,11 @@ func IndexRouter(c echo.Context) error {
 	ctx, cancel = context.WithTimeout(context.Background(), 55*time.Second)
 	defer cancel()
 
-	rows, err = db.QueryContext(ctx, `SELECT TO_CHAR("DATE"),TEMP FROM BLOODTEMP ORDER BY "DATE"`)
+	// 潜伏期間　14日
+	// 新しいほうから14日分取り出す SQL; 逆順ソートしたものを、14個分順ソートしなおして取り出す
+	// select * from (select * from bloodtemp order by "DATE" desc) t where rownum<14 order by t."DATE" ;
+
+	rows, err = db.QueryContext(ctx, `SELECT TO_CHAR("DATE"),TEMP FROM (SELECT * FROM BLOODTEMP ORDER BY "DATE" DESC) t WHERE ROWNUM<14 ORDER BY t."DATE"`)
 	if err != nil {
 		panic(err)
 	}
