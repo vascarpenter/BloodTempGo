@@ -3,26 +3,39 @@
 
 <center>
 <p>{{.Title}}</p>
-
+<div id="parent">
+<div id="child1">
 <table border="1" cellspacing="0" cellpadding="5"  bordercolor="#333333">
   &nbsp;&nbsp;
   <tr><th>日付</th>
   <th>体温</th>
+  <th>メモ</th>
 </tr>
 {{range $n,$i := .Temps}}
 &nbsp;&nbsp;
     <tr>
         <td>{{$i.Date}}</td>
         <td>{{$i.Temp}}</td>
+        <td>{{$i.Memo.String}}</td>
     </tr>
 {{end}}
 
 </table>
+
 <br><br>
 <form action="/" method="post" class="board-form">
   <span class="label">今日の体温&nbsp;&nbsp;</span><input type="text" name="bloodtemp" class="input" required>&nbsp;度<br>
-  <button type="submit" class="submit">追加</button>
+  <br>
+  <span class="label">メモ&nbsp;&nbsp;</span><input type="text" name="memo" class="input"><br>
+  <br>
+ <button type="submit" class="submit">追加</button>
 </form>
+
+</div>
+<div id="child2"><img src="/img/temps.png"></div>
+</div>
+</div>
+
 </center>
 
 {{template "footer"}}

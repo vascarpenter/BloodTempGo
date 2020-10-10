@@ -19,6 +19,7 @@ sqlplus admin/XXXXX@XXX_tp @/tmp/tmp.sql
 CREATE TABLE "ADMIN"."BLOODTEMP" 
    (	"DATE" DATE NOT NULL ENABLE, 
      	"TEMP" NUMBER NOT NULL ENABLE
+      "MEMO" VARCHAR2(100 CHAR) COLLATE "USING_NLS_COMP"
    );
 ```
 
@@ -50,3 +51,7 @@ sudo firewall-cmd --list-ports
 - ソース: 0.0.0.0/0、宛先ポート3001 を追加
 
 - これで外部から 3001 ポートにアクセスできるようになりました
+
+# 変更履歴
+- 体温グラフを追加
+- メモ欄の追加

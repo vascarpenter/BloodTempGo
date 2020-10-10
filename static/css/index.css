@@ -28,6 +28,22 @@ p {
     color: rgb(252, 22, 71);
 }
 
+  
+@media (min-width: 600px) {
+    #parent {
+      display: flex;
+      display: -webkit-flex; /* old safari */
+    }
+    #child1 {
+      flex-grow: 1;
+      -webkit-flex: 1; /* old safari */
+    }
+    #child2 {
+      flex-grow: 1;
+      -webkit-flex: 1; /* old safari */
+    }
+  }
+
 table {
     border-collapse:  collapse; /* セルの線を重ねる */
 }

@@ -7,4 +7,5 @@ require (
 	github.com/labstack/echo-contrib v0.9.0
 	github.com/labstack/echo/v4 v4.1.17
 	github.com/mattn/go-oci8 v0.0.8
+	gonum.org/v1/plot v0.8.0
 )
