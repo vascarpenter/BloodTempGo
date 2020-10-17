@@ -24,16 +24,19 @@ CREATE TABLE "ADMIN"."BLOODTEMP"
 ```
 
 - port 3001 を開ける（下記参照）
+- 環境変数の設定
+  - setenv OCISTRING admin/ADWpassword@database_tp に設定
+  - setenv PORT 3001 (省略時は3001) 
 
 - OCI上で `BloodTemp &` で起動
 
 - PCやスマホからhttp://XXXXXXX:3001/ で接続
   - 体温を入力してリストに追加しよう
 
-- 例：port 3001の開け方
+- port 3001の開け方
 - まず Oracle Linux で下記を実行
 ```
-$ sudo firewall-cmd --list-ports
+$ sudo firewall-cmd --list-ports   # 開いているポート
 3000/tcp
 $ sudo firewall-cmd --permanent --add-port=3001/tcp
 success
@@ -43,7 +46,7 @@ sudo firewall-cmd --list-ports
 3000/tcp 3001/tcp
 ```
 
-- つぎにWebのVCN設定を起動
+- つぎにWebからOCI VCN設定を起動
 - ネットワーキング> 仮想クラウド・ネットワーク> 仮想クラウド・ネットワークの詳細より 「Security Lists」をクリック
 - 右端の...から、「View Security List 詳細」をクリック
 - 「Edit All Rules」をクリック
